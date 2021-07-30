@@ -21,17 +21,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function getDisplay(characters) {
         console.log(characters);
-        characters.map((character) => {
-            const liELement = document.createElement('li');
-            liELement.innerHTML = `
-            <img src="${character.image}" alt="${character.name}">
-            <div class="character-info">
-                <h2 class="characterName">${character.name}</h2>
-                <p class="characterHouse">House: ${character.house}</p>
-            </div>
+        let card = characters.map((character) => {
+            return `
+            <li>
+                <img src="${character.image}" alt="${character.name}">
+                <div class="character-info">
+                    <h2 class="characterName">${character.name}</h2>
+                    <p class="characterHouse">House: ${character.house}</p>
+                </div>
+            </li>
             `;
-            contentInside.appendChild(liELement);
-        })
+        }).join('');
+
+        contentInside.innerHTML = card;
+
     }
 
 

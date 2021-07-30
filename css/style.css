@@ -69,17 +69,20 @@ body{
 }
 
 .container{
-    max-width: 1300px;
+    max-width: 1000px;
     margin: 1.5rem auto;
-    
+    padding: 40px;
 }
 
 .container .characterList{
-    list-style: none;
+    /* list-style: none;
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
-
+    flex-wrap: wrap; */
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 20px;
 }
 
 .characterList li{
@@ -91,7 +94,7 @@ body{
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
-    min-width: 40%;
+    /* min-width: 40%; */
 }
 
 .characterList li:hover{
