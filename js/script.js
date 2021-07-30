@@ -6,12 +6,27 @@ window.addEventListener('DOMContentLoaded', () => {
     const searchBtn = document.querySelector('.submit');
     const contentInside = document.querySelector('.characterList');
 
+    let characterData = [];
     getContent(URL);
+
+    searchInput.addEventListener('keyup', (e) => {
+        const searchValue = e.target.value.toLowerCase();
+        const filteredCharacter = characterData.filter(character => {
+            return (character.name.toLowerCase().includes(searchValue)
+                || character.house.toLowerCase().includes(searchValue)
+            );
+        })
+        console.log(filteredCharacter);
+        getDisplay(filteredCharacter);
+    })
+
+
+
     async function getContent(url) {
         try {
             const resp = await fetch(url);
-            const data = await resp.json();
-            getDisplay(data);
+            characterData = await resp.json();
+            getDisplay(characterData);
         }
         catch (err) {
             console.log(err)
@@ -36,6 +51,7 @@ window.addEventListener('DOMContentLoaded', () => {
         contentInside.innerHTML = card;
 
     }
+
 
 
 });
